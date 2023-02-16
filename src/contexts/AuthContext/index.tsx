@@ -3,6 +3,7 @@ import useSWR from 'swr'
 import signin from 'services/auth/signin'
 import signout from 'services/auth/signout'
 import type { ApiContext, User } from 'types'
+import logger from 'utils/logger'
 
 type AuthContextType = {
   authUser?: User
@@ -48,6 +49,7 @@ export const AuthContextProvider = ({
   // サインイン
   const signinInternal = async (username: string, password: string) => {
     await signin(context, { username, password })
+    logger.info('${username}がログインしました')
     await mutate()
   }
 
