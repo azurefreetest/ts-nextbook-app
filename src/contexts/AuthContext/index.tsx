@@ -49,7 +49,7 @@ export const AuthContextProvider = ({
   // サインイン
   const signinInternal = async (username: string, password: string) => {
     await signin(context, { username, password })
-    logger.info('${username}がログインしました')
+    logger.info(`${username}がログインしました`)
     await mutate()
   }
 
